@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Pendu</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        var PetsLists = ["dauphin",
+            "baleine",
+            "poule",
+            "vache",
+            "mouton",
+            "cochon",
+            "tortue",
+            "canard",
+            "coq"
+        ];
+
+
+        function selectionAleatoire(liste) {
+            return liste[Math.floor(Math.random() * liste.length)];
+        }
+
+        function position(word, letter) {
+            let indexChar = new Array()
+            arrayLetterWorld = word.split("")
+            arrayLetterWorld.forEach((element, index) => {
+                if (letter === element) {
+                    indexChar.push(index)
+                }
+            })
+
+            if (indexChar.length === 0) {
+                return null
+            } else {
+                return indexChar
+            }
+        }
+
+        
+    </script>
+
+</body>
+
+</html>
