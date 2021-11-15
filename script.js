@@ -12,11 +12,11 @@ const petList = [
 // console.log(petList[3])
 let pet = petList[aleaNb(0, petList.length)];
 console.log(pet);
+
 const arrayPet = pet.split("")
 
 
 arrayPet.forEach((element, index) => {
-    
     let myIndex = index;
     let myCase = `<div class="border border-dark col-lg-1 col-1 rounded text-center myLetter" id="indexLetter${myIndex}"></div>`
     petName.innerHTML += myCase;
@@ -35,7 +35,14 @@ function aleaNb(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 };
 
+myKeyboard.addEventListener("click", (e) => {
+    if (e.target.nodeName == "BUTTON") {
+        console.log(e.target.textContent);
+    }
+});
 
+let dennis = 2;
+document.getElementById(`indexLetter${dennis}`).innerText = "Z";
 
 
 
