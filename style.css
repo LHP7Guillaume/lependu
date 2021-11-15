@@ -1,5 +1,5 @@
 .toucheclavier {
-    
+    border-radius: 10px;
 }
 
 .container {
@@ -10,4 +10,5 @@
 .bouton {
 
     background-color: aquamarine;
+    border-radius: 10px;
 }
