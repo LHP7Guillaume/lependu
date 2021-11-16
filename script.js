@@ -1,3 +1,4 @@
+let play = true;
 const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 const myKeyboard = document.getElementById("myKeyboard");
 const petName = document.getElementById("petName")
@@ -6,6 +7,13 @@ const petList = [
     "pingouin",
     "ecureuil",
     "babouin",
+    "canard",
+    "pigeon",
+    "belette",
+    "renard",
+    "saumon",
+    "autruche",
+    "dauphin",
     "galinette",
     "sanglier"
 ];
@@ -14,6 +22,8 @@ let pet = petList[aleaNb(0, petList.length)];
 console.log(pet);
 
 const arrayPet = pet.split("")
+// console log pour tricher
+console.log(arrayPet);
 
 
 arrayPet.forEach((element, index) => {
@@ -35,16 +45,102 @@ function aleaNb(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 };
 
+let nbLetter = 0;
+let life = 8;
+
+
+
 myKeyboard.addEventListener("click", (e) => {
-    if (e.target.nodeName == "BUTTON") {
+    if (e.target.nodeName == "BUTTON" && play === true) {
+
+        let myScore = nbLetter
         console.log(e.target.textContent);
+        e.target.className = "m-2 btn btn-primary col-2 ";
+        e.target.disabled = true;
+
+        arrayPet.forEach((element, index) => {
+            if (e.target.innerText.toLowerCase() == element) {
+                document.getElementById(`indexLetter${index}`).innerText = element
+                nbLetter++;
+            }
+        });
+
+        if (nbLetter == arrayPet.length) {
+            if (confirm("You Win Jeune Padawan, Veux tu rejouer?")) {
+                location.reload();
+            }
+            play = false
+        }
+
+        if (myScore == nbLetter) {
+            life--
+        }
+
+        switch (life) {
+            case 0:
+                confirm("You loose Jeune Padawan, Veux tu rejouer?")
+                break;
+
+            case 7:
+                document.getElementById("myLife").innerHTML = "❤️❤️❤️❤️❤️❤️❤️💔"
+                break;
+
+            case 6:
+                document.getElementById("myLife").innerHTML = "❤️❤️❤️❤️❤️❤️💔💔"
+                break;
+
+            case 5:
+                document.getElementById("myLife").innerHTML = "❤️❤️❤️❤️❤️💔💔💔"
+                break;
+            case 4:
+                document.getElementById("myLife").innerHTML = "❤️❤️❤️❤️💔💔💔💔"
+                break;
+
+            case 3:
+                document.getElementById("myLife").innerHTML = "❤️❤️❤️💔💔💔💔💔"
+                break;
+
+            case 2:
+                document.getElementById("myLife").innerHTML = "❤️❤️💔💔💔💔💔💔"
+                break;
+
+            case 1:
+                document.getElementById("myLife").innerHTML = "❤️💔💔💔💔💔💔💔"
+                break;
+
+                // case 7:
+                //     document.getElementById("myLife").innerHTML = "☠️❤️❤️❤️❤️❤️🚙"
+                //     break;
+
+                //     case 6:
+                //     document.getElementById("myLife").innerHTML = "☠️❤️❤️❤️❤️🚙"
+                //     break;
+
+                //     case 5:
+                //     document.getElementById("myLife").innerHTML = "☠️❤️❤️❤️🚙"
+                //     break;
+
+                //     case 4:
+                //     document.getElementById("myLife").innerHTML = "☠️❤️❤️❤️🚙"
+                //     break;
+
+                //     case 3:
+                //     document.getElementById("myLife").innerHTML = "☠️❤️❤️🚙"
+                //     break;
+
+                //     case 2:
+                //     document.getElementById("myLife").innerHTML = "☠️❤️🚙"
+                //     break;
+
+                //     case 1:
+                //     document.getElementById("myLife").innerHTML = "☠️🚙"
+                //     break;
+
+            default:
+                break;
+        }
     }
 });
-
-let dennis = 2;
-document.getElementById(`indexLetter${dennis}`).innerText = "Z";
-
-
 
 
 
