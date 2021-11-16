@@ -78,7 +78,11 @@ myKeyboard.addEventListener("click", (e) => {
 
         switch (life) {
             case 0:
-                confirm("You loose Jeune Padawan, Veux tu rejouer?")
+                document.getElementById("myLife").innerHTML = ""
+                if (confirm("You loose Jeune Padawan, Veux tu rejouer?")) {
+                    location.reload();
+                };
+                play = false;
                 break;
 
             case 7:
